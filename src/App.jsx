@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import {
     Menu,
-    Header,
     Divider
 } from 'semantic-ui-react';
 import Home from './scenes/Home';
@@ -20,30 +19,56 @@ import 'semantic-ui-less/semantic.less'
 
 
 export default class App extends Component {
+  state = { activeItem: 'home' }
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   constructor(props) {
     super(props);
     console.log("HeaderMenu constructor");
-    console.log(this);
+    // When reloading on a route we need to set the element
+    if (window.location.pathname.substr(1)) {
+      this.state.activeItem = window.location.pathname.substr(1);
+    }
   }
 
   render() {
+    const { activeItem } = this.state
+
     return (
       <div className="App">
         <Router>
           <div
           fluid>
-            <Menu secondary as={Header}>
-              <Menu.Item as={Link} to="/">
+            <Menu stackable tabular>
+              <Menu.Item
+                name='home'
+                active={activeItem === 'home'}
+                onClick={this.handleItemClick}
+                as={Link} to="/"
+              >
                 Home
               </Menu.Item>
-              <Menu.Item as={Link} to="/blog">
+              <Menu.Item
+                name='blog'
+                active={activeItem === 'blog'}
+                onClick={this.handleItemClick}
+                as={Link} to="/blog"
+              >
                 Blog
               </Menu.Item>
-              <Menu.Item as={Link} to="/projects">
+              <Menu.Item
+                name='projects'
+                active={activeItem === 'projects'}
+                onClick={this.handleItemClick}
+                as={Link} to="/projects"
+              >
                 Projects
               </Menu.Item>
-              <Menu.Item as={Link} to="/resume">
+              <Menu.Item
+                name='resume'
+                active={activeItem === 'resume'}
+                onClick={this.handleItemClick}
+                as={Link} to="/resume">
                 Resume
               </Menu.Item>
             </Menu>
