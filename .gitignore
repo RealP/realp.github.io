@@ -1,2 +1,2 @@
-test.html
-*.log
+build/
+node_modules/
