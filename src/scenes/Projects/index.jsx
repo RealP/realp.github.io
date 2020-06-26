@@ -14,6 +14,16 @@ const MyProject = () => (
         </Item.Content>
       </Item>
 
+      <Item as='a' href="https://github.com/RealP/evercuts">
+        <Item.Image size='tiny' src='/github-icon.png' />
+        <Item.Content>
+          <Item.Header>Evercuts</Item.Header>
+          <Item.Description>
+            Chrome extension adding keyboard shortcuts to Evernote Web GUI.
+          </Item.Description>
+        </Item.Content>
+      </Item>
+
       <Item as='a' href="https://github.com/RealP/Graph-Internet-Speed">
         <Item.Image size='tiny' src='/github-icon.png' />
         <Item.Content>
